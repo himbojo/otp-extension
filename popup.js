@@ -25,3 +25,15 @@ document.onreadystatechange = function () {
         });
     }
 }
+
+document.addEventListener('DOMContentLoaded', function () {
+    chrome.storage.sync.get("tokens", ({ tokens }) => {
+        tokens.forEach(token => {
+            var div = document.createElement('div');
+            div.className = 'flex';
+            div.innerHTML = token;
+            document.body.appendChild(div);
+        });
+    });
+
+}, false);
